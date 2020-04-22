@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //Init router
 const commonRouter = require('./routers/common-router');
 const productRouter = require('./routers/product-router');
-const authenticationRouter = require('./routers/authentication-router');
+//const authenticationRouter = require('./routers/authentication-router');
 
 const app = express();
 
@@ -52,7 +52,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //Config Router/Render
 app.use(commonRouter);
 app.use(productRouter);
-app.use(authenticationRouter);
+//app.use(authenticationRouter);
 //Redirect if page not found
 app.get('*', (req, res) => res.status(404).render('page/page-404'));
 
