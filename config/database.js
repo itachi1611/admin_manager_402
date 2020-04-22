@@ -2,6 +2,8 @@
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
+//'mongodb://localhost:27017/product402' 
+//mongodb+srv://root:<password>@cluster-jus3j.gcp.mongodb.net/test
 var mongoDB = 'mongodb://localhost:27017/product402';
 mongoose.connect(mongoDB, {useNewUrlParser: true})
     .catch(error => handleError(error));
