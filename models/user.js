@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//Đây là đối tượng user cho bảng users
 const userSchema = new mongoose.Schema({
     email: {
         type: String,

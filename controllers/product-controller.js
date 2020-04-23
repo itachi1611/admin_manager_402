@@ -2,6 +2,14 @@ var Product = require('../models/product');
 
 module.exports.getProduct = function (req, res, next) {
     Product.find({}, function (err, products) {
+        res.setHeader('Content-Type', 'application/json');
+        products.forEach(product => {
+            res.send(JSON.stringify({
+                name:product.name,
+                price:product.price,
+                description:product.description
+            }));
+        });
         res.render('product', {
             title: 'Manager Product',
             products: products
