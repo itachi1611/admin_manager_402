@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //Init router
 const commonRouter = require('./routers/common-router');
 const productRouter = require('./routers/product-router');
-const authenticationRouter = require('./routers/authentication-router');
+//const authenticationRouter = require('./routers/authentication-router');
 
 const app = express();
 
@@ -36,8 +36,11 @@ app.listen(port, () => console.log(`Running on localhost:${port}`));
 
 //Set up default mongoose connection
 //'mongodb://localhost:27017/product402' 
-//mongodb+srv://root:<password>@cluster-jus3j.gcp.mongodb.net/test
-var mongoDB = 'mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/product402' ||process.env.MONGODB_URI;
+//mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test
+//mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/test
+var mongoDB =
+  "mongodb+srv://admin:0983366564@cluster0-rz40k.mongodb.net/product402" ||
+  process.env.MONGODB_URI;
 mongoose.connect(mongoDB, {
         useNewUrlParser: true
     })
@@ -52,7 +55,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //Config Router/Render
 app.use(commonRouter);
 app.use(productRouter);
-app.use(authenticationRouter);
+//app.use(authenticationRouter);
 //Redirect if page not found
 app.get('*', (req, res) => res.status(404).render('page/page-404'));
 
