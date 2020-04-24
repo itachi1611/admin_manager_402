@@ -1,7 +1,4 @@
-//Cái này quản lý router cho đăng nhập đăng kí
-//Ví dụ bên product-router
-
-var express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 
 var router = express.Router();
@@ -12,15 +9,14 @@ var authenticationController = require('../controllers/authentication-controller
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /**
- * Method : POST
- * Đăng nhập
- *
+ * POST
+ * Login
  */
-router.get('/login', urlencodedParser, authenticationController.onLogin);
+router.post('/login', urlencodedParser, authenticationController.onLogin);
 
 /**
- * Method: POST
- * Đăng kí
+ * POST
+ * Register
  */
 router.post('/register', urlencodedParser, authenticationController.onRegister);
 

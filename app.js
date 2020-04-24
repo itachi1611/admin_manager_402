@@ -1,12 +1,18 @@
+'use strict'
 //Config Express
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Init router
 const commonRouter = require('./routers/common-router');
 const productRouter = require('./routers/product-router');
-//const authenticationRouter = require('./routers/authentication-router');
+const authenticationRouter = require('./routers/authentication-router');
+
+//Init connection to MongoDB
+const initMongoServer = require('./config/database');
+
+
 
 const app = express();
 
@@ -31,8 +37,9 @@ var upload = multer({storage: storage});
 
 //Start server
 const port = process.env.PORT || '3000';
-app.listen(port, () => console.log(`Running on localhost:${port}`));
 
+// Middleware
+app.use(bodyParser.json());
 
 //Set up default mongoose connection
 //'mongodb://localhost:27017/product402' 
@@ -46,16 +53,15 @@ mongoose.connect(mongoDB, {
 })
     .catch(error => handleError(error));
 
-//Get the default connection
-var db = mongoose.connection;
+app.listen(port, () => console.log(`Running on localhost:${port}`));
 
-//Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+initMongoServer();
 
 //Config Router/Render
 app.use(commonRouter);
 app.use(productRouter);
-//app.use(authenticationRouter);
+app.use(authenticationRouter);
+
 //Redirect if page not found
 app.get('*', (req, res) => res.status(404).render('page/page-404'));
 
