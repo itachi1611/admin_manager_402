@@ -1,4 +1,3 @@
-'use strict'
 //Config Express
 const express = require('express');
 const path = require('path');
@@ -11,8 +10,6 @@ const authenticationRouter = require('./routers/authentication-router');
 
 //Init connection to MongoDB
 const initMongoServer = require('./config/database');
-
-
 
 const app = express();
 
