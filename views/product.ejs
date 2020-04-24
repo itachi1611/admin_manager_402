@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css" />
 
     <!-- MAIN CSS -->
@@ -48,7 +50,7 @@
 
         <div id="main-content">
             <div class="container-fluid">
-                
+
                 <% include breadcum %>
 
                 <div class="row clearfix">
@@ -85,13 +87,22 @@
                                                         <div class="form-group">
                                                             <label for="productname" class="loginFormElement">Name
                                                                 Product</label>
-                                                            <input class="form-control" id="productname" type="text" name="name">
+                                                            <input class="form-control" id="productname" type="text"
+                                                                name="name">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="productprice" class="loginFormElement">Product
                                                                 Price</label>
-                                                            <input class="form-control" id="productprice" type="number" name="price">
+                                                            <input class="form-control" id="productprice" type="number"
+                                                                name="price">
+                                                        </div>
+                                                        <!-- input image -->
+                                                        <div class="form-group">
+                                                            <label for="productimage" class="loginFormElement">Product
+                                                                Image</label>
+                                                            <input class="form-control" id="productimage" type="text"
+                                                                name="image">
                                                         </div>
 
 
@@ -102,6 +113,7 @@
                                                             <input class="filestyle" type="file">
 
                                                         </div>
+
 
                                                         <div class="form-group">
                                                             <label class="loginformelement"
@@ -131,6 +143,7 @@
                                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                         <thead>
                                             <tr>
+                                                <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Description</th>
@@ -140,12 +153,13 @@
                                         <tbody>
                                             <% products.forEach(function(product) { %>
                                             <tr class="gradeA">
+                                                <td><img src="<%= product.image %>"/></td>
                                                 <td><%= product.name %></td>
                                                 <td><%= product.price %></td>
-                                                <td><%= product.decription %></td>
+                                                <td><%= product.description %></td>
 
-                                            <td class="actions">
-                                                <!-- <button
+                                                <td class="actions">
+                                                    <!-- <button
                                                                     class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
                                                                     data-toggle="tooltip" data-original-title="Save" hidden><i
                                                                         class="icon-drawer" aria-hidden="true"></i></button>
@@ -153,16 +167,16 @@
                                                                     class="btn btn-sm btn-icon btn-pure btn-default on-editing button-discard"
                                                                     data-toggle="tooltip" data-original-title="Discard" hidden><i
                                                                         class="icon-close" aria-hidden="true"></i></button> -->
-                                                <button
-                                                    class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 "
-                                                    data-toggle="modal" data-target="#<%= product._id %>"
-                                                    data-original-title="Edit"><i class="icon-pencil"
-                                                        aria-hidden="true"></i></button>
-                                                <button class="btn btn-sm btn-icon btn-pure btn-default on-default"
-                                                    data-target="#del<%=product._id %>" data-toggle="modal"
-                                                    data-original-title="Remove"><i class="icon-trash"
-                                                        aria-hidden="true"></i></button>
-                                            </td>
+                                                    <button
+                                                        class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 "
+                                                        data-toggle="modal" data-target="#<%= product._id %>"
+                                                        data-original-title="Edit"><i class="icon-pencil"
+                                                            aria-hidden="true"></i></button>
+                                                    <button class="btn btn-sm btn-icon btn-pure btn-default on-default"
+                                                        data-target="#del<%=product._id %>" data-toggle="modal"
+                                                        data-original-title="Remove"><i class="icon-trash"
+                                                            aria-hidden="true"></i></button>
+                                                </td>
                                             </tr>
                                             <!-- The Modal Edit start -->
                                             <div class="modal dialog" id="<%= product._id %>">
@@ -193,9 +207,8 @@
                                                                             class="loginFormElement">Name
                                                                             Product</label>
                                                                         <input class="form-control"
-                                                                            value="<%= product.name %>"
-                                                                            name="name" id="productname"
-                                                                            type="text">
+                                                                            value="<%= product.name %>" name="name"
+                                                                            id="productname" type="text">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="productprice"
@@ -246,9 +259,10 @@
                                                             <h5 class="modal-title">Remove Product</h5>
                                                         </div>
                                                         <h4 class="modal-title modal-body">You'vd remove product?</h4>
+                                                        <div class="modal-body">Image: <%= product.image %></div>
                                                         <div class="modal-body">Name: <%= product.name %></div>
                                                         <div class="modal-body">Prire: <%= product.price %></div>
-                                                        <div class="modal-body">Decription: <%= product.decription %>
+                                                        <div class="modal-body">Decription: <%= product.description %>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <form role="form" action="/product/remove" method="POST">
@@ -265,9 +279,11 @@
                                             </div>
                                             <!-- The Modal Remove end -->
                                             <% }); %>
-                                            </tbody>
+                                        </tbody>
                                         <tfoot>
                                             <tr>
+                                               
+                                                <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Description</th>
