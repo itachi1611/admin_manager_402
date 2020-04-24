@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+//Login
 module.exports.onLogin = function (req, res, next) {
     
     // User.find({
@@ -17,7 +18,7 @@ module.exports.onLogin = function (req, res, next) {
     // });
 };
 
-//Add product
+//Register
 module.exports.onRegister = () => {
     // [
     //   check("email", "Please enter a valid email").not().isEmpty().isEmail(),
@@ -80,6 +81,7 @@ module.exports.onRegister = () => {
     //     console.log("saved");
     //     res.redirect("/dashboard");
     //   };
+   
     // Create an instance of model SomeModel
     //Validate register form
     var user = new User({

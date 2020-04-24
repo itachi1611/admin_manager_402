@@ -6,9 +6,7 @@ var router = express.Router();
 var authenticationController = require('../controllers/authentication-controller');
 
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({
-    extended: false
-});
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /**
  * POST

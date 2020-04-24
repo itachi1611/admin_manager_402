@@ -30,13 +30,25 @@ var storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 })
-var upload = multer({ storage: storage });
+var upload = multer({storage: storage});
 
 //Start server
 const port = process.env.PORT || '3000';
 
 // Middleware
 app.use(bodyParser.json());
+
+//Set up default mongoose connection
+//'mongodb://localhost:27017/product402' 
+//mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test
+//mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/test
+var mongoDB =
+    "mongodb+srv://admin:0983366564@cluster0-rz40k.mongodb.net/product402" ||
+    process.env.MONGODB_URI;
+mongoose.connect(mongoDB, {
+    useNewUrlParser: true
+})
+    .catch(error => handleError(error));
 
 app.listen(port, () => console.log(`Running on localhost:${port}`));
 
