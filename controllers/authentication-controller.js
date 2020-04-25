@@ -15,6 +15,8 @@ module.exports.onLogin = (req, res, next) => {
         } else {
             if (req.body.password.localeCompare(user.password) == 1) {
                 console.log("Incorrect password");
+            } else if(!user.isAdmin) {
+                console.log("You are not admin");
             } else {
                 console.log(req.body.password);
                 console.log(user.email);
