@@ -760,8 +760,13 @@
                                                 <td>
                                                     <img src="uploads/admin.png"
                                                         class="rounded-circle avatar" alt="">
-                                                    <p class="c_name"><%= user.name %><span
-                                                            class="badge badge-default m-l-10 hidden-sm-down">Admin</span>
+                                                    <p class="c_name"><%= user.name %>
+                                                        <% if(user.isAdmin) { %>
+                                                            <span class="badge badge-default m-l-10 hidden-sm-down">Admin</span>
+                                                        <% } else { %>
+                                                        <span
+                                                            class="badge badge-default m-l-10 hidden-sm-down">Customer</span>
+                                                        <% } %>
                                                     </p>
                                                 </td>
                                                 <td>
