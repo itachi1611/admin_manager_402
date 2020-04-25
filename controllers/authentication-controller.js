@@ -13,13 +13,15 @@ module.exports.onLogin = (req, res, next) => {
         if (!user) {
             console.log("Wrong account information");
         } else {
-            if (req.body.password.trim() != (user.password.trim())) {
+            if (req.body.password.localeCompare(user.password) == 1) {
                 console.log("Incorrect password");
+            } else {
+                console.log(req.body.password);
+                console.log(user.email);
+                console.log(user.password);
+                console.log("welcome " + user.email);
+                res.redirect('/dashboard');
             }
-            console.log(user.email);
-            console.log(user.password);
-            console.log("welcome " + user.email);
-            res.redirect('/dashboard');
         }
     })
 };
