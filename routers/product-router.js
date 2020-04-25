@@ -11,6 +11,9 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 /* GET product page. */
 router.get('/product', productController.getProduct);
 
+/* API GET product list */
+router.get('/api/product', productController.getProductApi);
+
 /* POST product add page. */
 router.post('/product/add', urlencodedParser, productController.insertProduct);
 

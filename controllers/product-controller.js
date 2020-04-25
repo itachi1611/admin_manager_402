@@ -61,6 +61,22 @@ module.exports.getProduct = function (req, res, next) {
     });
 };
 
+module.exports.getProductApi = function (req, res, next) {
+    Product.find({}, function (err, products) {
+        let result = [];
+        res.setHeader('Content-Type', 'application/json');
+        products.forEach(product => {
+            result.push({
+                name:product.name,
+                price:product.price,
+                description:product.description,
+                image: product.image
+            });
+        });
+        res.send(JSON.stringify(result));
+    });
+};
+
 //Add product
 module.exports.insertProduct = function (req, res, next) {
     // Create an instance of model SomeModel
