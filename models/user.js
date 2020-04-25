@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     {
       token: {
         type: String,
-        require: true,
+        required: true,
       },
     },
   ],
@@ -50,6 +50,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   }
+}, {
+  strict: false
 });
 
 userSchema.methods.generateAuthToken = async function () {

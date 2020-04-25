@@ -797,32 +797,30 @@
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
                                                             <div class="col-md-12">
-                                                                <form role="form" action="/user/edit" method="POST"
-                                                                    enctype="multipart/form-data">
+                                                                <form role="form" action="/user/edit" method="POST">
+                                                                    <input class="form-control" hidden="true"
+                                                                        value="<%= user._id %>" name="uid"
+                                                                        id="productid" type="text">
                                                                     <div class="form-group">
                                                                         <label for="productname"
                                                                             class="loginFormElement">Full
                                                                             Name</label>
                                                                         <input class="form-control"
                                                                             value="<%= user.name %>" name="name"
-                                                                            id="username" type="text">
+                                                                            id="productname" type="text">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="productprice"
-                                                                            class="loginFormElement">Phone
-                                                                            </label>
+                                                                            class="loginFormElement">Phone</label>
                                                                         <input class="form-control" name="phone"
                                                                             value="<%= user.phone %>"
-                                                                            id="phone" type="number">
+                                                                            id="productprice" type="number">
                                                                     </div>
                                                                     <!-- Modal footer -->
                                                                     <div class="modal-footer">
-                                                                        <input class="form-control" hidden="true"
-                                                                            value="<%= user._id %>" name="uid"
-                                                                            id="productid" type="text">
                                                                         <button type="submit" id="loginSubmit"
                                                                             class="btn btn-success loginFormElement">Edit
-                                                                            User</button>
+                                                                            Product</button>
                                                                         <button type="button" class="btn btn-danger"
                                                                             data-dismiss="modal">Close</button>
                                                                     </div>

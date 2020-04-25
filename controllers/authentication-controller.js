@@ -32,7 +32,9 @@ module.exports.onRegister = (req, res, next) => {
     var user = new User({
         email: req.body.email,
         password: req.body.password,
-        isAdmin: true
+        isAdmin: true,
+        name:"",
+        phone:""
     });
 
     // Save the new model instance, passing a callback
