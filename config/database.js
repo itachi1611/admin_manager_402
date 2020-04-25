@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //Set up default mongoose connection
 //mongodb://localhost:27017/product402
-//mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test?retryWrites=true&w=majority
+//mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/product402?retryWrites=true&w=majority
 //mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/product402
 const mongoDB =
-  "mongodb://localhost:27017/product402" ||
+  "mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/product402?retryWrites=true&w=majority" ||
   process.env.MONGODB_URI;
 const options = {
     useNewUrlParser: true,
