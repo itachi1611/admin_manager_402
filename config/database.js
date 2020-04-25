@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test?retryWrites=true&w=majority
 //mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/product402
 const mongoDB =
-  "mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test?retryWrites=true&w=majority" ||
+  "mongodb://localhost:27017/product402" ||
   process.env.MONGODB_URI;
 const options = {
     useNewUrlParser: true,

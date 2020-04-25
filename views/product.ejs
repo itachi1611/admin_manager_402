@@ -14,10 +14,10 @@
 
     <link rel="stylesheet" href="../assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
-        href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+          href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
     <link rel="stylesheet"
-        href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css" />
+          href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css"/>
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -36,288 +36,297 @@
 
 <body class="theme-blue">
 
-    <% include header %>
+<% include header %>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-        <% include nav-bar %>
+    <% include nav-bar %>
 
-        <% include left-side-bar %>
+    <% include left-side-bar %>
 
-        <% include mega-menu-bar %>
+    <% include mega-menu-bar %>
 
-        <% include right-side-bar %>
+    <% include right-side-bar %>
 
-        <div id="main-content">
-            <div class="container-fluid">
+    <div id="main-content">
+        <div class="container-fluid">
 
-                <% include breadcum %>
+            <% include breadcum %>
 
-                <div class="row clearfix">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <!-- <div class="header">
-                                <h2>Table Tools<small>Basic example without any additional modification classes</small>
-                                </h2>
-                            </div> -->
-                            <div class="body">
-                                <button data-toggle="modal" data-target="#myModal" class="btn btn-primary m-b-15"
-                                    data-type="prompt">Add Product</button>
-                                <!-- The Modal start -->
-                                <div class="modal dialog" id="myModal">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <!-- <div class="header">
+                            <h2>Table Tools<small>Basic example without any additional modification classes</small>
+                            </h2>
+                        </div> -->
+                        <div class="body">
+                            <button data-toggle="modal" data-target="#myModal" class="btn btn-primary m-b-15"
+                                    data-type="prompt">Add Product
+                            </button>
+                            <!-- The Modal start -->
+                            <div class="modal dialog" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
 
-                                            <!-- Modal Header -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Add Product</h4>
-                                                <button type="button" class="close"
-                                                    data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <div class="modal-body">
-                                                <div class="col-md-12">
-                                                    <form role="form" action="/product/add" method="POST">
-                                                        <select class="form-control" id="productSelect">
-                                                            <option>Please Select a Product Group</option>
-                                                            <option>Bar Soaps</option>
-                                                            <option>Lotions</option>
-                                                            <option>Creams</option>
-                                                        </select>
-                                                        <div class="form-group">
-                                                            <label for="productname" class="loginFormElement">Name
-                                                                Product</label>
-                                                            <input class="form-control" id="productname" type="text"
-                                                                name="name">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add Product</h4>
+                                            <button type="button" class="close"
+                                                    data-dismiss="modal">&times;
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="col-md-12">
+                                                <form role="form" action="/product/add" method="POST">
+                                                    <select class="form-control" id="productSelect">
+                                                        <option>Please Select a Product Group</option>
+                                                        <option>Bar Soaps</option>
+                                                        <option>Lotions</option>
+                                                        <option>Creams</option>
+                                                    </select>
+                                                    <div class="form-group">
+                                                        <label for="productname" class="loginFormElement">Name
+                                                            Product</label>
+                                                        <input class="form-control" id="productname" type="text"
+                                                               name="name">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="productprice" class="loginFormElement">Product
+                                                            Price</label>
+                                                        <input class="form-control" id="productprice" type="number"
+                                                               name="price">
+                                                    </div>
+                                                    <!-- input image -->
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label">Product Image</label>
+
+                                                        <input class="filestyle" type="file">
+
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label class="loginformelement"
+                                                               for="productdescription">Product Description</label>
+                                                        <input id="productdescription" class="form-control input-lg"
+                                                               placeholder="Large" type="text" name="description">
+                                                        <div class="container">
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="productprice" class="loginFormElement">Product
-                                                                Price</label>
-                                                            <input class="form-control" id="productprice" type="number"
-                                                                name="price">
-                                                        </div>
-                                                        <!-- input image -->
-                                                        <div class="form-group">
-                                                            <label for="productimage" class="loginFormElement">Product
-                                                                Image</label>
-                                                            <input class="form-control" id="productimage" type="text"
-                                                                name="image">
-                                                        </div>
-
-
-                                                        <div class="form-group">
-
-                                                            <label class="control-label">Product Image</label>
-
-                                                            <input class="filestyle" type="file">
-
-                                                        </div>
-
-
-                                                        <div class="form-group">
-                                                            <label class="loginformelement"
-                                                                for="productdescription">Product Description</label>
-                                                            <input id="productdescription" class="form-control input-lg"
-                                                                placeholder="Large" type="text" name="description">
-                                                            <div class="container">
-                                                            </div>
-
-                                                        </div>
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="submit" id="loginSubmit"
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" id="loginSubmit"
                                                                 class="btn btn-success loginFormElement">Add
-                                                                Product</button>
-                                                            <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                            Product
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- The Modal end -->
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                        <thead>
-                                            <tr>
-                                                <th>Image</th>
-                                                <th>Name</th>
-                                                <th>Price</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% products.forEach(function(product) { %>
-                                            <tr class="gradeA">
-                                                <td><img src="<%= product.image %>"/></td>
-                                                <td><%= product.name %></td>
-                                                <td><%= product.price %></td>
-                                                <td><%= product.description %></td>
+                            </div>
+                            <!-- The Modal end -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% products.forEach(function(product) { %>
+                                        <tr class="gradeA">
+                                            <td><img src="<%= product.image %>"/>
+                                            </td>
+                                            <td><%= product.name %></td>
+                                            <td><%= product.price %></td>
+                                            <td><%= product.description %></td>
 
-                                                <td class="actions">
-                                                    <!-- <button
-                                                                    class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
-                                                                    data-toggle="tooltip" data-original-title="Save" hidden><i
-                                                                        class="icon-drawer" aria-hidden="true"></i></button>
-                                                                <button
-                                                                    class="btn btn-sm btn-icon btn-pure btn-default on-editing button-discard"
-                                                                    data-toggle="tooltip" data-original-title="Discard" hidden><i
-                                                                        class="icon-close" aria-hidden="true"></i></button> -->
-                                                    <button
+                                            <td class="actions">
+                                                <!-- <button
+                                                                class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
+                                                                data-toggle="tooltip" data-original-title="Save" hidden><i
+                                                                    class="icon-drawer" aria-hidden="true"></i></button>
+                                                            <button
+                                                                class="btn btn-sm btn-icon btn-pure btn-default on-editing button-discard"
+                                                                data-toggle="tooltip" data-original-title="Discard" hidden><i
+                                                                    class="icon-close" aria-hidden="true"></i></button> -->
+                                                <button
                                                         class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 "
                                                         data-toggle="modal" data-target="#<%= product._id %>"
                                                         data-original-title="Edit"><i class="icon-pencil"
-                                                            aria-hidden="true"></i></button>
-                                                    <button class="btn btn-sm btn-icon btn-pure btn-default on-default"
-                                                        data-target="#del<%=product._id %>" data-toggle="modal"
+                                                                                      aria-hidden="true"></i></button>
+                                                <button class="btn btn-sm btn-icon btn-pure btn-default on-default"
+                                                        data-target="#del<%= product._id %>" data-toggle="modal"
                                                         data-original-title="Remove"><i class="icon-trash"
-                                                            aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <!-- The Modal Edit start -->
-                                            <div class="modal dialog" id="<%= product._id %>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Add Product</h4>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal">&times;</button>
-                                                        </div>
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-                                                            <div class="col-md-12">
-                                                                <form role="form" action="/product/edit" method="POST">
-                                                                    <select class="form-control" id="productSelect">
-                                                                        <option>Please Select a Product Group
-                                                                        </option>
-                                                                        <option>Bar Soaps</option>
-                                                                        <option>Lotions</option>
-                                                                        <option>Creams</option>
-                                                                    </select>
-                                                                    <input class="form-control" hidden="true"
-                                                                        value="<%= product._id %>" name="pid"
-                                                                        id="productid" type="text">
-                                                                    <div class="form-group">
-                                                                        <label for="productname"
-                                                                            class="loginFormElement">Name
-                                                                            Product</label>
-                                                                        <input class="form-control"
-                                                                            value="<%= product.name %>" name="name"
-                                                                            id="productname" type="text">
+                                                                                        aria-hidden="true"></i></button>
+                                            </td>
+                                        </tr>
+                                        <!-- The Modal Edit start -->
+                                        <div class="modal dialog" id="<%= product._id %>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Add Product</h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            <form role="form" action="/product/edit" method="POST">
+                                                                <select class="form-control" id="productSelect">
+                                                                    <option>Please Select a Product Group
+                                                                    </option>
+                                                                    <option>Bar Soaps</option>
+                                                                    <option>Lotions</option>
+                                                                    <option>Creams</option>
+                                                                </select>
+                                                                <input class="form-control" hidden="true"
+                                                                       value="<%= product._id %>" name="pid"
+                                                                       id="productid" type="text">
+                                                                <div class="form-group">
+                                                                    <label for="productname"
+                                                                           class="loginFormElement">Name
+                                                                        Product</label>
+                                                                    <input class="form-control"
+                                                                           value="<%= product.name %>" name="name"
+                                                                           id="productname" type="text">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="productprice"
+                                                                           class="loginFormElement">Product
+                                                                        Price</label>
+                                                                    <input class="form-control" name="price"
+                                                                           value="<%= product.price %>"
+                                                                           id="productprice" type="number">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Product
+                                                                        Image</label>
+                                                                    <input class="filestyle" type="file">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="loginformelement"
+                                                                           for="productdescription">Product
+                                                                        Description</label>
+                                                                    <input id="productdescription"
+                                                                           name="description"
+                                                                           class="form-control input-lg"
+                                                                           value="<%= product.decription %>"
+                                                                           placeholder="Large" type="text">
+                                                                    <div class="container">
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label for="productprice"
-                                                                            class="loginFormElement">Product
-                                                                            Price</label>
-                                                                        <input class="form-control" name="price"
-                                                                            value="<%= product.price %>"
-                                                                            id="productprice" type="number">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label">Product
-                                                                            Image</label>
-                                                                        <input class="filestyle" type="file">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="loginformelement"
-                                                                            for="productdescription">Product
-                                                                            Description</label>
-                                                                        <input id="productdescription"
-                                                                            name="description"
-                                                                            class="form-control input-lg"
-                                                                            value="<%= product.decription %>"
-                                                                            placeholder="Large" type="text">
-                                                                        <div class="container">
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Modal footer -->
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" id="loginSubmit"
-                                                                            class="btn btn-success loginFormElement">Edit
-                                                                            Product</button>
-                                                                        <button type="button" class="btn btn-danger"
-                                                                            data-dismiss="modal">Close</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+                                                                <!-- Modal footer -->
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" id="loginSubmit"
+                                                                            class="btn btn-success loginFormElement">
+                                                                        Edit
+                                                                        Product
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Close
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- The Modal Edit end -->
-                                            <!-- The Modal Remove start -->
-                                            <div id="del<%=product._id %>" class="modal modal-dangerdialog"
-                                                style="display: none;" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Remove Product</h5>
-                                                        </div>
-                                                        <h4 class="modal-title modal-body">You'vd remove product?</h4>
-                                                        <div class="modal-body">Image: <%= product.image %></div>
-                                                        <div class="modal-body">Name: <%= product.name %></div>
-                                                        <div class="modal-body">Prire: <%= product.price %></div>
-                                                        <div class="modal-body">Decription: <%= product.description %>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form role="form" action="/product/remove" method="POST">
-                                                                <input class="form-control" hidden="true"
-                                                                    value="<%= product._id %>" name="pid"
-                                                                    id="remproductid" type="text">
-                                                                <button type="button" class="btn btn-success"
-                                                                    data-dismiss="modal">Cancer</button>
-                                                                <button type="submit" class="btn btn-danger">OK</button>
-                                                            </form>
-                                                        </div>
-                                                    </div> <!-- / .modal-content -->
-                                                </div> <!-- / .modal-dialog -->
-                                            </div>
-                                            <!-- The Modal Remove end -->
-                                            <% }); %>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                               
-                                                <th>Image</th>
-                                                <th>Name</th>
-                                                <th>Price</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                                        </div>
+                                        <!-- The Modal Edit end -->
+                                        <!-- The Modal Remove start -->
+                                        <div id="del<%= product._id %>" class="modal modal-dangerdialog"
+                                             style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Remove Product</h5>
+                                                    </div>
+                                                    <h4 class="modal-title modal-body">You'vd remove product?</h4>
+                                                    <div class="modal-body">Image: <%= product.image %></div>
+                                                    <div class="modal-body">Name: <%= product.name %></div>
+                                                    <div class="modal-body">Prire: <%= product.price %></div>
+                                                    <div class="modal-body">Decription: <%= product.description %>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form role="form" action="/product/remove" method="POST">
+                                                            <input class="form-control" hidden="true"
+                                                                   value="<%= product._id %>" name="pid"
+                                                                   id="remproductid" type="text">
+                                                            <button type="button" class="btn btn-success"
+                                                                    data-dismiss="modal">Cancer
+                                                            </button>
+                                                            <button type="submit" class="btn btn-danger">OK</button>
+                                                        </form>
+                                                    </div>
+                                                </div> <!-- / .modal-content -->
+                                            </div> <!-- / .modal-dialog -->
+                                        </div>
+                                        <!-- The Modal Remove end -->
+                                    <% }); %>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- Javascript -->
-    <script src="../assets/bundles/libscripts.bundle.js"></script>
-    <script src="../assets/bundles/vendorscripts.bundle.js"></script>
+</div>
 
-    <script src="../assets/bundles/datatablescripts.bundle.js"></script>
-    <script src="../assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-    <script src="../assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-    <script src="../assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-    <script src="../assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
-    <script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+<!-- Javascript -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+<script src="../assets/bundles/vendorscripts.bundle.js"></script>
 
-    <script src="../assets/vendor/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
+<script src="../assets/bundles/datatablescripts.bundle.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
+<script src="../assets/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+
+<script src="../assets/vendor/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
 
 
-    <script src="../assets/bundles/mainscripts.bundle.js"></script>
-    <script src="../assets/bundles/morrisscripts.bundle.js"></script>
-    <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
+<script src="../assets/bundles/mainscripts.bundle.js"></script>
+<script src="../assets/bundles/morrisscripts.bundle.js"></script>
+<script src="../assets/js/pages/tables/jquery-datatable.js"></script>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>
