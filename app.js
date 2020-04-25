@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 
 //Init router
 const commonRouter = require('./routers/common-router');
@@ -20,23 +21,12 @@ app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-//Config Multer
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './upload');
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-})
-var upload = multer({storage: storage});
-
 //Start server
 const port = process.env.PORT || '3000';
 
 // Middleware
 app.use(bodyParser.json());
+
 app.listen(port, () => console.log(`Running on localhost:${port}`));
 
 initMongoServer();

@@ -17,7 +17,7 @@
           href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
     <link rel="stylesheet"
           href="../assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="../assets/vendor/sweetalert/sweetalert.css" />
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
@@ -62,8 +62,7 @@
                         </div> -->
                         <div class="body">
                             <button data-toggle="modal" data-target="#myModal" class="btn btn-primary m-b-15"
-                                    data-type="prompt">Add Product
-                            </button>
+                                    data-type="prompt">Add Product</button>
                             <!-- The Modal start -->
                             <div class="modal dialog" id="myModal">
                                 <div class="modal-dialog">
@@ -73,13 +72,12 @@
                                         <div class="modal-header">
                                             <h4 class="modal-title">Add Product</h4>
                                             <button type="button" class="close"
-                                                    data-dismiss="modal">&times;
-                                            </button>
+                                                    data-dismiss="modal">&times;</button>
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body">
                                             <div class="col-md-12">
-                                                <form role="form" action="/product/add" method="POST">
+                                                <form role="form" action="/product/add" method="POST" enctype="multipart/form-data">
                                                     <select class="form-control" id="productSelect">
                                                         <option>Please Select a Product Group</option>
                                                         <option>Bar Soaps</option>
@@ -100,12 +98,19 @@
                                                                name="price">
                                                     </div>
                                                     <!-- input image -->
+                                                    <div class="form-group">
+                                                        <label for="productimage" class="loginFormElement">Product
+                                                            Image</label>
+                                                        <input class="form-control" id="productimage" type="text"
+                                                               name="image">
+                                                    </div>
+
 
                                                     <div class="form-group">
 
                                                         <label class="control-label">Product Image</label>
 
-                                                        <input class="filestyle" type="file">
+                                                        <input class="filestyle" type="file" name="picture" multiple>
 
                                                     </div>
 
@@ -123,11 +128,9 @@
                                                     <div class="modal-footer">
                                                         <button type="submit" id="loginSubmit"
                                                                 class="btn btn-success loginFormElement">Add
-                                                            Product
-                                                        </button>
+                                                            Product</button>
                                                         <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Close
-                                                        </button>
+                                                                data-dismiss="modal">Close</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -150,8 +153,7 @@
                                     <tbody>
                                     <% products.forEach(function(product) { %>
                                         <tr class="gradeA">
-                                            <td><img src="<%= product.image %>"/>
-                                            </td>
+                                            <td><img src="uploads/<%= product.image %>"/> </td>
                                             <td><%= product.name %></td>
                                             <td><%= product.price %></td>
                                             <td><%= product.description %></td>
@@ -171,7 +173,7 @@
                                                         data-original-title="Edit"><i class="icon-pencil"
                                                                                       aria-hidden="true"></i></button>
                                                 <button class="btn btn-sm btn-icon btn-pure btn-default on-default"
-                                                        data-target="#del<%= product._id %>" data-toggle="modal"
+                                                        data-target="#del<%=product._id %>" data-toggle="modal"
                                                         data-original-title="Remove"><i class="icon-trash"
                                                                                         aria-hidden="true"></i></button>
                                             </td>
@@ -184,13 +186,12 @@
                                                     <div class="modal-header">
                                                         <h4 class="modal-title">Add Product</h4>
                                                         <button type="button" class="close"
-                                                                data-dismiss="modal">&times;
-                                                        </button>
+                                                                data-dismiss="modal">&times;</button>
                                                     </div>
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <div class="col-md-12">
-                                                            <form role="form" action="/product/edit" method="POST">
+                                                            <form role="form" action="/product/edit" method="POST" enctype="multipart/form-data">
                                                                 <select class="form-control" id="productSelect">
                                                                     <option>Please Select a Product Group
                                                                     </option>
@@ -220,7 +221,7 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label">Product
                                                                         Image</label>
-                                                                    <input class="filestyle" type="file">
+                                                                    <input class="filestyle" multiple type="file" name="picture">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="loginformelement"
@@ -237,13 +238,10 @@
                                                                 <!-- Modal footer -->
                                                                 <div class="modal-footer">
                                                                     <button type="submit" id="loginSubmit"
-                                                                            class="btn btn-success loginFormElement">
-                                                                        Edit
-                                                                        Product
-                                                                    </button>
+                                                                            class="btn btn-success loginFormElement">Edit
+                                                                        Product</button>
                                                                     <button type="button" class="btn btn-danger"
-                                                                            data-dismiss="modal">Close
-                                                                    </button>
+                                                                            data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -253,7 +251,7 @@
                                         </div>
                                         <!-- The Modal Edit end -->
                                         <!-- The Modal Remove start -->
-                                        <div id="del<%= product._id %>" class="modal modal-dangerdialog"
+                                        <div id="del<%=product._id %>" class="modal modal-dangerdialog"
                                              style="display: none;" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -261,7 +259,8 @@
                                                         <h5 class="modal-title">Remove Product</h5>
                                                     </div>
                                                     <h4 class="modal-title modal-body">You'vd remove product?</h4>
-                                                    <div class="modal-body">Image: <%= product.image %></div>
+                                                    <div class="modal-body">Image: <img
+                                                                src="uploads/<%= product.image %>" /></div>
                                                     <div class="modal-body">Name: <%= product.name %></div>
                                                     <div class="modal-body">Prire: <%= product.price %></div>
                                                     <div class="modal-body">Decription: <%= product.description %>
@@ -272,8 +271,7 @@
                                                                    value="<%= product._id %>" name="pid"
                                                                    id="remproductid" type="text">
                                                             <button type="button" class="btn btn-success"
-                                                                    data-dismiss="modal">Cancer
-                                                            </button>
+                                                                    data-dismiss="modal">Cancer</button>
                                                             <button type="submit" class="btn btn-danger">OK</button>
                                                         </form>
                                                     </div>
@@ -321,12 +319,6 @@
 <script src="../assets/bundles/mainscripts.bundle.js"></script>
 <script src="../assets/bundles/morrisscripts.bundle.js"></script>
 <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
-
-<script
-        src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 
 </html>

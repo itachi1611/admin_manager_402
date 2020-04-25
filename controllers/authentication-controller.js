@@ -1,4 +1,4 @@
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -31,15 +31,15 @@ module.exports.onRegister = () => {
     //     }),
     // ], async (req, res, next) => {
     //     const errors = validationResult(req);
-    //
+
     //     if (!errors.isEmpty()) {
     //       return res.status(400).json({
     //         errors: errors.array(),
     //       });
     //     }
-    //
+
     //     const { email, password } = req.body;
-    //
+
     //     try {
     //       let user = await User.findOne({
     //         email,
@@ -49,24 +49,24 @@ module.exports.onRegister = () => {
     //           message: "User already exists",
     //         });
     //       }
-    //
+
     //       user = new User({
-    //           email,
+    //           email, 
     //           password
     //       });
-    //
+
     //       const salt = await bcrypt.genSalt(10);
     //       user.password = await bcrypt.hash(password, salt);
-    //
+        
     //       //Save new register user
     //       await user.save();
-    //
+
     //       const payload = {
     //           user: {
     //               id: user.id
     //           }
     //       };
-    //
+
     //       jwt.sign(payload, "randomString", {
     //           expiresIn: 10000
     //       },(err, token) => {
@@ -81,6 +81,7 @@ module.exports.onRegister = () => {
     //     console.log("saved");
     //     res.redirect("/dashboard");
     //   };
+   
     // Create an instance of model SomeModel
     //Validate register form
     var user = new User({
