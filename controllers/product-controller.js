@@ -1,4 +1,46 @@
+const fs = require('fs');
+const multer = require('multer');
 var Product = require('../models/product');
+const path = require('path');
+
+var img_name;
+//Config Multer
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function (req, file, cb) {
+        img_name = file.fieldname + "-" + Date.now() + path.extname(file.originalname);
+        cb(null, img_name);
+    }
+})
+
+
+var upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
+}).array("picture", 5);
+
+// Check File Type
+function checkFileType(file, cb) {
+    // Allowed ext
+    const filetypes = /jpeg|jpg|png|gif/;
+    // Check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    // Check mime
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+        return cb(null, true);
+    } else {
+        cb('Error: Images Only!');
+    }
+}
 
 module.exports.getProduct = function (req, res, next) {
     Product.find({}, function (err, products) {
@@ -21,20 +63,36 @@ module.exports.getProduct = function (req, res, next) {
 
 //Add product
 module.exports.insertProduct = function (req, res, next) {
-    // Create an instance of model SomeModel
-    var product = new Product({
-      // image: req.body.image,
-      name: req.body.name,
-      price: req.body.price,
-      description: req.body.description,
-    });
+    upload(req, res, function (err) {
+        if (err) {
+            console.log("Something went wrong!");
+        }
+        var path = "uploads/" + img_name;
+        //var image = fs.readFileSync(path);
+        //var encode_image = image.toString('base64');
+        console.log("File uploaded sucessfully!.");
+        var product = new Product({
+            // image: req.body.image,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: img_name
+        });
 
-    // Save the new model instance, passing a callback
-    product.save(function (err) {
-        if (err) return handleError(err);
-        console.log('saved');
-        res.redirect('/product');
+        // Save the new model instance, passing a callback
+        product.save()
+            .then(item => {
+                console.log('saved');
+                res.redirect('/product');
+            })
+            .catch(err => {
+                console.log('unsaved');
+            });
     });
+    
+    // Define a JSONobject for the image attributes for saving to database
+    // Create an instance of model SomeModel
+    
 };
 
 //Edit product

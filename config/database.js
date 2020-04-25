@@ -1,6 +1,6 @@
 //Import the mongoose module
 const mongoose = require('mongoose');
-
+mongoose.Promise = global.Promise;
 //Set up default mongoose connection
 //mongodb://localhost:27017/product402
 //mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test?retryWrites=true&w=majority

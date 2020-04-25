@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const multer = require('multer');
 
 //Init router
 const commonRouter = require('./routers/common-router');
@@ -20,35 +21,11 @@ app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-//Config Multer
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './upload');
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-})
-var upload = multer({storage: storage});
-
 //Start server
 const port = process.env.PORT || '3000';
 
 // Middleware
 app.use(bodyParser.json());
-
-//Set up default mongoose connection
-//'mongodb://localhost:27017/product402' 
-//mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/test
-//mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/test
-var mongoDB =
-    "mongodb+srv://admin:0983366564@cluster0-rz40k.mongodb.net/product402" ||
-    process.env.MONGODB_URI;
-mongoose.connect(mongoDB, {
-    useNewUrlParser: true
-})
-    .catch(error => handleError(error));
 
 app.listen(port, () => console.log(`Running on localhost:${port}`));
 
