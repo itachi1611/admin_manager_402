@@ -42,6 +42,14 @@ const userSchema = new mongoose.Schema({
     },
   ],
   isAdmin: Boolean,
+  phone: {
+      type: String,
+      required: false
+  },
+  name: {
+    type: String,
+    required: false
+  }
 });
 
 userSchema.methods.generateAuthToken = async function () {

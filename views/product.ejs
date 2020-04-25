@@ -156,7 +156,11 @@
                                         <tbody>
                                             <% products.forEach(function(product) { %>
                                             <tr class="gradeA">
-                                                <td><img src="uploads/<%= product.image %>" width="150" height="150"/> </td>
+                                                <% if(product.image != null) { %>
+                                                    <td><img src="uploads/<%= product.image %>" width="150" height="150"/> </td>
+                                                <% } else { %>
+                                                    <td><img src="uploads/no_image.png" width="150" height="150" /> </td>
+                                                <% } %>
                                                 <td><%= product.name %></td>
                                                 <td><%= product.price %></td>
                                                 <td><%= product.description %></td>
@@ -263,9 +267,11 @@
                                                             <h5 class="modal-title">Remove Product</h5>
                                                         </div>
                                                         <h4 class="modal-title modal-body">You'vd remove product?</h4>
-                                                        <div class="modal-body">Image:<img
-                                                                src="uploads/<%= product.image %>" width="150"
-                                                                height="150" /></div>
+                                                        <% if(product.image != null) { %>
+                                                            <div class="modal-body">Image:<img src="uploads/<%= product.image %>" width="150" height="150" /></div>
+                                                        <% } else { %>
+                                                            <div class="modal-body">Image:<img src="uploads/no_image.png" width="150" height="150" /></div>
+                                                        <% } %>
                                                         <div class="modal-body">Name: <%= product.name %></div>
                                                         <div class="modal-body">Prire: <%= product.price %></div>
                                                         <div class="modal-body">Decription: <%= product.description %>

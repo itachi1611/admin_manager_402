@@ -5,23 +5,18 @@ mongoose.Promise = global.Promise;
 //mongodb://localhost:27017/product402
 //mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/product402?retryWrites=true&w=majority
 //mongodb+srv://admin:<password>@cluster0-rz40k.mongodb.net/product402
-const mongoDB =
-  "mongodb+srv://root:root@cluster-jus3j.gcp.mongodb.net/product402?retryWrites=true&w=majority" ||
-  process.env.MONGODB_URI;
+const mongoDB = "mongodb://localhost:27017/product402";
 const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
-}
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+};
 const initMongoServer = async() => {
-    try {
-        await mongoose.connect(mongoDB, options);
-        console.log("Connected to DB !!");
-    } catch (e) {
-        console.log(e);
-        throw e;
-    }
+        await mongoose.connect(mongoDB, options)
+        .then(console.log("Connected to DB !!"))
+        .catch(err => console.log(err));
 };
 
  //Get the default connection

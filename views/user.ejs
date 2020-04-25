@@ -744,129 +744,123 @@
                                                 </th>
                                                 <th>Name</th>
                                                 <th>Phone</th>
-                                                <th>Address</th>
+                                                <th>Email</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% users.forEach(function(user) { %>
                                             <tr>
                                                 <td style="width: 50px;">
                                                     <label class="fancy-checkbox">
                                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                                         <span></span>
                                                     </label>
-                                                </td>
+                                                </td> 
                                                 <td>
-                                                    <img src="../assets/images/xs/avatar1.jpg"
+                                                    <img src="uploads/admin.png"
                                                         class="rounded-circle avatar" alt="">
-                                                    <p class="c_name">John Smith <span
-                                                            class="badge badge-default m-l-10 hidden-sm-down">Family</span>
+                                                    <p class="c_name"><%= user.name %><span
+                                                            class="badge badge-default m-l-10 hidden-sm-down">Admin</span>
                                                     </p>
                                                 </td>
                                                 <td>
                                                     <span class="phone"><i
-                                                            class="fa fa-phone m-r-10"></i>264-625-2583</span>
+                                                            class="fa fa-phone m-r-10"></i><%= user.phone %></span>
                                                 </td>
                                                 <td>
-                                                    <address><i class="fa fa-map-marker"></i>123 6th St. Melbourne, FL
-                                                        32904</address>
+                                                    <address><i class="fa fa-map-marker"></i><%= user.email %>
+                                                    </address>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info" title="Edit"><i
+                                                    <button type="button" class="btn btn-info"
+                                                        data-original-title="Edit"
+                                                        data-toggle="modal" data-target="#edit<%= user._id %>"><i
                                                             class="fa fa-edit"></i></button>
                                                     <button type="button" data-type="confirm"
-                                                        class="btn btn-danger js-sweetalert" title="Delete"><i
+                                                        class="btn btn-danger js-sweetalert"
+                                                        data-target="#del<%=user._id %>" data-toggle="modal"
+                                                        data-original-title="Remove"><i
                                                             class="fa fa-trash-o"></i></button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="fancy-checkbox">
-                                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                        <span></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <img src="../assets/images/xs/avatar3.jpg"
-                                                        class="rounded-circle avatar" alt="">
-                                                    <p class="c_name">Hossein Shams <span
-                                                            class="badge badge-info m-l-10 hidden-sm-down">Google</span>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <span class="phone"><i
-                                                            class="fa fa-phone m-r-10"></i>264-625-5689</span>
-                                                </td>
-                                                <td>
-                                                    <address><i class="fa fa-map-marker"></i>44 Shirley Ave. West
-                                                        Chicago, IL 60185</address>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info" title="Edit"><i
-                                                            class="fa fa-edit"></i></button>
-                                                    <button type="button" data-type="confirm"
-                                                        class="btn btn-danger js-sweetalert" title="Delete"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="fancy-checkbox">
-                                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                        <span></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <img src="../assets/images/xs/avatar9.jpg"
-                                                        class="rounded-circle avatar" alt="">
-                                                    <p class="c_name">Frank Camly</p>
-                                                </td>
-                                                <td>
-                                                    <span class="phone"><i
-                                                            class="fa fa-phone m-r-10"></i>264-625-9999</span>
-                                                </td>
-                                                <td>
-                                                    <address><i class="fa fa-map-marker"></i>123 6th St. Melbourne, FL
-                                                        32904</address>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info" title="Edit"><i
-                                                            class="fa fa-edit"></i></button>
-                                                    <button type="button" data-type="confirm"
-                                                        class="btn btn-danger js-sweetalert" title="Delete"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="fancy-checkbox">
-                                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                        <span></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <img src="../assets/images/xs/avatar10.jpg"
-                                                        class="rounded-circle avatar" alt="">
-                                                    <p class="c_name">Tim Hank<span
-                                                            class="badge badge-default m-l-10 hidden-sm-down">Family</span>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <span class="phone"><i
-                                                            class="fa fa-phone m-r-10"></i>264-625-1212</span>
-                                                </td>
-                                                <td>
-                                                    <address><i class="fa fa-map-marker"></i>70 Bowman St. South
-                                                        Windsor, CT 06074</address>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-info" title="Edit"><i
-                                                            class="fa fa-edit"></i></button>
-                                                    <button type="button" data-type="confirm"
-                                                        class="btn btn-danger js-sweetalert" title="Delete"><i
-                                                            class="fa fa-trash-o"></i></button>
-                                                </td>
-                                            </tr>
+                                            <!-- The Modal Edit start -->
+                                            <div class="modal dialog" id="edit<%= user._id %>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit User</h4>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="col-md-12">
+                                                                <form role="form" action="/user/edit" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    <div class="form-group">
+                                                                        <label for="productname"
+                                                                            class="loginFormElement">Full
+                                                                            Name</label>
+                                                                        <input class="form-control"
+                                                                            value="<%= user.name %>" name="name"
+                                                                            id="username" type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="productprice"
+                                                                            class="loginFormElement">Phone
+                                                                            </label>
+                                                                        <input class="form-control" name="phone"
+                                                                            value="<%= user.phone %>"
+                                                                            id="phone" type="number">
+                                                                    </div>
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <input class="form-control" hidden="true"
+                                                                            value="<%= user._id %>" name="uid"
+                                                                            id="productid" type="text">
+                                                                        <button type="submit" id="loginSubmit"
+                                                                            class="btn btn-success loginFormElement">Edit
+                                                                            User</button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- The Modal Edit end -->
+                                            <!-- The Modal Remove start -->
+                                            <div id="del<%=user._id %>" class="modal modal-dangerdialog"
+                                                style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Remove User</h5>
+                                                        </div>
+                                                        <h4 class="modal-title modal-body">You'vd remove user?</h4>
+                                                        <div class="modal-body">Name: <%= user.name %></div>
+                                                        <div class="modal-body">Email: <%= user.email %></div>
+                                                        <div class="modal-body">Phone: <%= user.phone %>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form role="form" action="/user/remove" method="POST">
+                                                                <input class="form-control" hidden="true"
+                                                                    value="<%= user._id %>" name="pid"
+                                                                    id="remproductid" type="text">
+                                                                <button type="button" class="btn btn-success"
+                                                                    data-dismiss="modal">Cancer</button>
+                                                                <button type="submit" class="btn btn-danger">OK</button>
+                                                            </form>
+                                                        </div>
+                                                    </div> <!-- / .modal-content -->
+                                                </div> <!-- / .modal-dialog -->
+                                            </div>
+                                            <!-- The Modal Remove end -->
+                                            <% }); %>
                                         </tbody>
                                     </table>
                                 </div>
