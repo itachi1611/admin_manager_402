@@ -39,4 +39,3 @@ app.use(authenticationRouter);
 //Redirect if page not found
 app.get('*', (req, res) => res.status(404).render('page/page-404'));
 
-

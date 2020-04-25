@@ -63,6 +63,7 @@ module.exports.getProduct = function (req, res, next) {
 
 //Add product
 module.exports.insertProduct = function (req, res, next) {
+    // Create an instance of model SomeModel
     upload(req, res, function (err) {
         if (err) {
             console.log("Something went wrong!");
@@ -78,7 +79,6 @@ module.exports.insertProduct = function (req, res, next) {
             description: req.body.description,
             image: img_name
         });
-
         // Save the new model instance, passing a callback
         product.save()
             .then(item => {
@@ -98,16 +98,16 @@ module.exports.insertProduct = function (req, res, next) {
 //Edit product
 module.exports.editProduct = function (req, res, next) {
     Product.findByIdAndUpdate(
-      req.body.pid,
-      {
-        // image: req.body.image,
-        name: req.body.name,
-        price: req.body.price,
-        description: req.body.description,
-      },
-      function (err) {
-        res.redirect("/product");
-      }
+        req.body.pid,
+        {
+            // image: req.body.image,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+        },
+        function (err) {
+            res.redirect("/product");
+        }
     );
 };
 //Remove product
@@ -125,3 +125,4 @@ module.exports.getProductsApi = function (req, res, next) {
         res.json(products)
     });
 };
+
