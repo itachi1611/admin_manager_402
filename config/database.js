@@ -23,17 +23,8 @@ const initMongoServer = async() => {
 const db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
-db.on("error", (error) =>
-console.error.bind(
-    console,
-    "MongoDB connection error:" + error.name
-)
-);
-db.on("connected", () =>
-console.error.bind(console, "mongo: Connected")
-);
-db.on("disconnected", () =>
-console.error.bind(console, "mongo: Disconnected")
-);
+db.on("error", (error) => console.error.bind(console, "MongoDB connection error:" + error.name));
+db.on("connected", () => console.error.bind(console, "mongo: Connected"));
+db.on("disconnected", () => console.error.bind(console, "mongo: Disconnected"));
 
 module.exports = initMongoServer;

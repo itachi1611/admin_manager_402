@@ -81,13 +81,19 @@
                                                         enctype="multipart/form-data">
                                                         <select class="form-control" id="productSelect">
                                                             <option>Please Select a Product Group</option>
-                                                            <option>Bar Soaps</option>
-                                                            <option>Lotions</option>
-                                                            <option>Creams</option>
+                                                            <option>Furniture</option>
+                                                            <option>Houseware</option>
+                                                            <option>Technological</option>
+                                                            <option>Security</option>
+                                                            <option>Picnic</option>
+                                                            <option>Nutritious food</option>
+                                                            <option>Functional foods</option>
+                                                            <option>Beauty</option>
+                                                            <option>Toy</option>
                                                         </select>
                                                         <div class="form-group">
-                                                            <label for="productname" class="loginFormElement">Name
-                                                                Product</label>
+                                                            <label for="productname" class="loginFormElement">Product
+                                                                Name</label>
                                                             <input class="form-control" id="productname" type="text"
                                                                 name="name">
                                                         </div>
@@ -99,29 +105,18 @@
                                                                 name="price">
                                                         </div>
                                                         <!-- input image -->
-                                                        <div class="form-group">
-                                                            <label for="productimage" class="loginFormElement">Product
-                                                                Image</label>
-                                                            <input class="form-control" id="productimage" type="text"
-                                                                name="image">
-                                                        </div>
-
 
                                                         <div class="form-group">
-
                                                             <label class="control-label">Product Image</label>
-
                                                             <input class="filestyle" type="file" name="picture"
                                                                 multiple>
-
                                                         </div>
-
 
                                                         <div class="form-group">
                                                             <label class="loginformelement"
                                                                 for="productdescription">Product Description</label>
                                                             <input id="productdescription" class="form-control input-lg"
-                                                                placeholder="Large" type="text" name="description">
+                                                                placeholder="This is product's description" type="text" name="description">
                                                             <div class="container">
                                                             </div>
 
@@ -156,8 +151,8 @@
                                         <tbody>
                                             <% products.forEach(function(product) { %>
                                             <tr class="gradeA">
-                                                <% if(product.image != null) { %>
-                                                    <td><img src="uploads/<%= product.image %>" width="150" height="150"/> </td>
+                                                <% if(product.local_image != null) { %>
+                                                    <td><img src="uploads/<%= product.local_image %>" width="150" height="150"/> </td>
                                                 <% } else { %>
                                                     <td><img src="uploads/no_image.png" width="150" height="150" /> </td>
                                                 <% } %>

@@ -1,15 +1,32 @@
 var express = require('express');
+const storage = require("node-sessionstorage");
 
 var router = express.Router();
 
 router.get('/', (req, res) => res.render('login'));
 router.get('/login', (req, res) => res.render('login'));
+router.get('/logout', (req, res) => {
+    storage.setItem("email", null);
+    res.render("login");
+})
 router.get('/register', (req, res) => res.render('register'));
 router.get('/order', (req, res) => res.render('order'));
 // router.get('/user', (req, res) => res.render('user'));
 router.get('/recover', (req, res) => res.render('recover'));
-router.get('/dashboard', (req, res) => res.render('dashboard'));
-router.post('/dashboard', (req, res) => res.render('dashboard'));
+router.get('/dashboard', (req, res) =>{
+    if (storage.getItem('email') != null) {
+      res.render("dashboard");
+    } else {
+      res.render("login");
+    }
+});
+router.post('/dashboard', (req, res) => {
+    if (storage.getItem('email') != null) {
+      res.render("dashboard");
+    } else {
+      res.render("login");
+    }
+});
 router.get('/page-lockscreen', (req, res) => res.render('page/page-lockscreen'));
 router.get('/profile', (req, res) => res.render('profile'));
 router.get('/inbox', (req, res) => res.render('inbox'));

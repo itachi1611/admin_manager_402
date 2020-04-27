@@ -44,16 +44,6 @@ function checkFileType(file, cb) {
 
 module.exports.getProduct = function (req, res, next) {
     Product.find({}, function (err, products) {
-        // let result = [];
-        // res.setHeader('Content-Type', 'application/json');
-        // products.forEach(product => {
-        //     result.push({
-        //         name:product.name,
-        //         price:product.price,
-        //         description:product.description
-        //     });
-        // });
-        // res.send(JSON.stringify(result));
         res.render('product', {
             title: 'Manager Product',
             products: products
@@ -85,16 +75,17 @@ module.exports.insertProduct = function (req, res, next) {
             console.log("Something went wrong!");
         }
         var path = "uploads/" + img_name;
-        //var image = fs.readFileSync(path);
-        //var encode_image = image.toString('base64');
+        var image = fs.readFileSync(path);
+        var encode_image = image.toString('base64');
         console.log("File uploaded sucessfully!.");
         var product = new Product({
-            // image: req.body.image,
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
-            image: img_name
+            local_image: img_name,
+            buffer_image: Buffer.from(encode_image, 'base64')
         });
+         console.log(Buffer.from(encode_image, "base64"));
         // Save the new model instance, passing a callback
         product.save()
             .then(item => {

@@ -1,3 +1,4 @@
+const storage = require("node-sessionstorage");
 const User = require("../models/user");
 
 //Login
@@ -18,6 +19,7 @@ module.exports.onLogin = (req, res, next) => {
                 console.log(user.email);
                 console.log(user.password);
                 console.log("welcome " + user.email);
+                storage.setItem("email", user.email);
                 res.redirect('/dashboard');
             }
         }

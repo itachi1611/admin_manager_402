@@ -13,10 +13,14 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  image: {
+  local_image: {
     type:String,
     //contentType: String,
     required:false
+  },
+  buffer_image: {
+    type: Buffer,
+    required: false
   }
 });
 

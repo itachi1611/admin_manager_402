@@ -240,7 +240,7 @@
                                                     <li><a href="javascript:void(0);"><i
                                                                 class="icon-settings"></i>Settings</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="/login"><i class="icon-power"></i>Logout</a>
+                                                    <li><a href="/logout"><i class="icon-power"></i>Logout</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -758,16 +758,19 @@
                                                     </label>
                                                 </td> 
                                                 <td>
-                                                    <img src="uploads/admin.png"
+                                                    <% if(user.isAdmin) { %>
+                                                    <img src="../assets/images/admin.png" class="rounded-circle avatar" alt="">
+                                                    <p class="c_name"><%= user.name %>
+                                                        <span class="badge badge-default m-l-10 hidden-sm-down">Admin</span>
+                                                    </p>      
+                                                    <% } else { %>
+                                                    <img src="../assets/images/customer.png"
                                                         class="rounded-circle avatar" alt="">
                                                     <p class="c_name"><%= user.name %>
-                                                        <% if(user.isAdmin) { %>
-                                                            <span class="badge badge-default m-l-10 hidden-sm-down">Admin</span>
-                                                        <% } else { %>
-                                                        <span
-                                                            class="badge badge-default m-l-10 hidden-sm-down">Customer</span>
-                                                        <% } %>
+                                                    <span
+                                                        class="badge badge-default m-l-10 hidden-sm-down">Customer</span>
                                                     </p>
+                                                    <% } %>
                                                 </td>
                                                 <td>
                                                     <span class="phone"><i
