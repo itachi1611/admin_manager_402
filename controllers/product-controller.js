@@ -1,7 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 const multer = require('multer');
 var Product = require('../models/product');
-const path = require('path');
 
 var img_name;
 //Config Multer
