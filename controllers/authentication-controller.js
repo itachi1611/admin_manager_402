@@ -32,7 +32,7 @@ module.exports.onLoginApi = (req, res, next) => {
     var email = post_data.email;
     var password = post_data.password;
     User.findOne({
-        "email": email,
+        email: email,
     }, function (err, user) {
         if (err) {
             res.json(user);
@@ -53,9 +53,12 @@ module.exports.onLoginApi = (req, res, next) => {
 module.exports.onRegisterApi = (req, res, next) => {
     // Create an instance of model SomeModel
     //Validate register form
+    var post_data = req.body;
+    var email = post_data.email;
+    var password = post_data.password;
     var user = new User({
-        email: req.body.email,
-        password: req.body.password,
+        email: email,
+        password: password,
         isAdmin: false,
         name: "",
         phone: ""
