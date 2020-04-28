@@ -20,4 +20,21 @@ router.post('/login', urlencodedParser, authenticationController.onLogin);
  */
 router.post('/register', urlencodedParser, authenticationController.onRegister);
 
+/**
+ * API
+ * POST
+ * Login
+ * Content - Type: application / x - www - form - urlencoded
+*/
+router.post('/api/login', urlencodedParser, authenticationController.onLoginApi);
+
+/**
+ * API
+ * POST
+ * Register
+ * Content - Type: application/x-www-form-urlencoded
+ */
+router.post('/api/register', urlencodedParser, authenticationController.onRegisterApi);
+
+
 module.exports = router;

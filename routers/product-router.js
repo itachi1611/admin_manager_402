@@ -12,7 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 router.get('/product', productController.getProduct);
 
 /* API GET product list */
-router.get('/api/product', productController.getProductApi);
+router.get('/api/product', productController.getProductsApi);
 
 /* POST product add page. */
 router.post('/product/add', urlencodedParser, productController.insertProduct);
@@ -24,6 +24,6 @@ router.post('/product/edit', urlencodedParser, productController.editProduct);
 router.post('/product/remove', urlencodedParser, productController.removeProduct);
 
 /* GET product json api. */
-router.get('/product/data', productController.getProductsApi);
+//router.get('/product/data', productController.getProductsApi);
 
 module.exports = router;
