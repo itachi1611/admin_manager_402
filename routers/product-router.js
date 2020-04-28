@@ -9,10 +9,10 @@ var productController = require('../controllers/product-controller');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /* GET product page. */
-router.get('/product', productController.getProduct);
+router.get('/product', productController.getProductsApi);
 
 /* API GET product list */
-router.get('/api/product', productController.getProductApi);
+router.get('/api/product', productController.getProductsApi);
 
 /* POST product add page. */
 router.post('/product/add', urlencodedParser, productController.insertProduct);
