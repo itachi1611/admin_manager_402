@@ -7,7 +7,7 @@ const invoiceSchema = new mongoose.Schema({
     },
     purchased_date: {
         type: Date,
-        required: Date.now()
+        default: Date.now()
     },
     shipping_address: {
         type: String,
@@ -23,6 +23,10 @@ const invoiceSchema = new mongoose.Schema({
     },
     product_name: {
         type: String,
+        required: true
+    },
+    product_quantity: {
+        type: Number,
         required: true
     }
 });

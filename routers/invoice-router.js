@@ -25,7 +25,4 @@ router.post('/order/edit', urlencodedParser, invoiceController.editOrder);
 /* POST order remove page. */
 router.post('/order/remove', urlencodedParser, invoiceController.removeOrder);
 
-/* GET order json api. */
-//router.get('/product/data', productController.getProductsApi);
-
 module.exports = router;

@@ -3,9 +3,28 @@ const storage = require("node-sessionstorage");
 
 var router = express.Router();
 
-router.get('/', (req, res) => res.render('login'));
-router.get('/login', (req, res) => res.render('login'));
-router.get('/register', (req, res) => res.render('register'));
+router.get('/', (req, res) => {
+  if(storage.getItem("email") != null) {
+    res.render('dashboard');
+  } else {
+    res.render('login');
+  }
+})
+router.get('/login', (req, res) => {
+  if (storage.getItem("email") != null) {
+    res.render('dashboard');
+  } else {
+    res.render('login');
+  }
+})
+
+router.get('/register', (req, res) => {
+  if (storage.getItem("email") != null) {
+    res.render('dashboard');
+  } else {
+    res.render('register');
+  }
+})
 
 router.get('/logout', (req, res) => {
   storage.setItem("email", null);

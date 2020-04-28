@@ -69,6 +69,7 @@ module.exports.getProductApi = function (req, res, next) {
 
 //Add product
 module.exports.insertProduct = function (req, res, next) {
+    // Define a JSONobject for the image attributes for saving to database
     // Create an instance of model SomeModel
     upload(req, res, function (err) {
         if (err) {
@@ -96,10 +97,6 @@ module.exports.insertProduct = function (req, res, next) {
                 console.log('unsaved');
             });
     });
-    
-    // Define a JSONobject for the image attributes for saving to database
-    // Create an instance of model SomeModel
-    
 };
 
 //Edit product
