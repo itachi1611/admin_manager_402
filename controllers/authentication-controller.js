@@ -26,16 +26,58 @@ module.exports.onLogin = (req, res, next) => {
     })
 };
 
-//Register
-module.exports.onRegister = (req, res, next) => {
+//Api Login
+module.exports.onLoginApi = (req, res, next) => {
+    var post_data = req.body;
+    var email = post_data.email;
+    var password = post_data.password;
+    User.findOne({
+        "email": email,
+    }, function (err, user) {
+        if (err) {
+            res.json(user);
+        }
+        if (!user) {
+            res.status(404).json(user)
+        } else {
+            if (password.localeCompare(user.password) == 1) {
+                res.status(401).json(user)
+            } else {
+                res.status(200).json(user);
+            }
+        }
+    })
+}
+
+//Api Register
+module.exports.onRegisterApi = (req, res, next) => {
     // Create an instance of model SomeModel
     //Validate register form
     var user = new User({
         email: req.body.email,
         password: req.body.password,
-        isAdmin: true,
-        name:"",
-        phone:""
+        isAdmin: false,
+        name: "",
+        phone: ""
+    });
+
+    // Save the new model instance, passing a callback
+    user.save(function (err) {
+        if (err) return handleError(err);
+        res.status(200).json({mess: 'Register successfully !'});
+    });
+}
+
+//Register
+module.exports.onRegister = (req, res, next) => {
+    // Create an instance of model SomeModel
+    //Validate register form
+    var user = new User({
+      email: req.body.email,
+      password: req.body.password,
+      isAdmin: true,
+      name: "",
+      phone: "",
     });
 
     // Save the new model instance, passing a callback
