@@ -194,11 +194,16 @@
                                                             <div class="col-md-12">
                                                                 <form role="form" action="/product/edit" method="POST">
                                                                     <select class="form-control" id="productSelect">
-                                                                        <option>Please Select a Product Group
-                                                                        </option>
-                                                                        <option>Bar Soaps</option>
-                                                                        <option>Lotions</option>
-                                                                        <option>Creams</option>
+                                                                        <option>Please Select a Product Group</option>
+                                                                        <option>Furniture</option>
+                                                                        <option>Houseware</option>
+                                                                        <option>Technological</option>
+                                                                        <option>Security</option>
+                                                                        <option>Picnic</option>
+                                                                        <option>Nutritious food</option>
+                                                                        <option>Functional foods</option>
+                                                                        <option>Beauty</option>
+                                                                        <option>Toy</option>
                                                                     </select>
                                                                     <input class="form-control" hidden="true"
                                                                         value="<%= product._id %>" name="pid"
@@ -222,7 +227,7 @@
                                                                     <div class="form-group">
                                                                         <label class="control-label">Product
                                                                             Image</label>
-                                                                        <input class="filestyle" type="file">
+                                                                        <input class="filestyle" type="file" name="picture" multiple>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="loginformelement"

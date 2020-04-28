@@ -101,19 +101,34 @@ module.exports.insertProduct = function (req, res, next) {
 
 //Edit product
 module.exports.editProduct = function (req, res, next) {
-    Product.findByIdAndUpdate(
-        req.body.pid,
-        {
-            // image: req.body.image,
-            name: req.body.name,
-            price: req.body.price,
-            description: req.body.description,
-        },
-        function (err) {
-            res.redirect("/product");
-        }
-    );
+    
+        Product.findByIdAndUpdate(
+            req.body.pid, 
+            // upload(req, res, function (err) {
+            //             if (err) {
+            //                 console.log("Something went wrong!");
+            //             }
+            //             var path = "uploads/" + img_name;
+            //             console.log(img_name);
+            //             console.log(path);
+            //             var image = fs.readFileSync(path);
+            //             var encode_image = image.toString('base64');
+            //             console.log("File uploaded sucessfully!.");
+            // }),
+            {
+                // image: req.body.image,
+                name: req.body.name,
+                price: req.body.price,
+                description: req.body.description,
+                local_image: img_name,
+                buffer_image: Buffer.from(encode_image, 'base64')
+            },
+            function (err) {
+                res.redirect("/product");
+            }
+        );
 };
+
 //Remove product
 module.exports.removeProduct = function (req, res, next) {
     Product.findByIdAndRemove(req.body.pid,

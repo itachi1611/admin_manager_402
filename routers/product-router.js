@@ -9,7 +9,7 @@ var productController = require('../controllers/product-controller');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 /* GET product page. */
-router.get('/product', productController.getProductsApi);
+router.get('/product', productController.getProduct);
 
 /* API GET product list */
 router.get('/api/product', productController.getProductsApi);
