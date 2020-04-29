@@ -19,6 +19,12 @@ router.get('/api/order', invoiceController.getOrderApi);
 /* POST order add page. */
 router.post('/order/add', urlencodedParser, invoiceController.insertOrder);
 
+/* API POST add order */
+router.post('/api/order/add', urlencodedParser, invoiceController.insertOrderApi);
+
+/* API POST find order by customer id */
+router.post('/api/order/{id}', urlencodedParser, invoiceController.findOrderByCustomerApi);
+
 /* POST order edit page. */
 router.post('/order/edit', urlencodedParser, invoiceController.editOrder);
 

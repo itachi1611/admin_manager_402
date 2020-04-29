@@ -36,5 +36,4 @@ router.post('/api/login', urlencodedParser, authenticationController.onLoginApi)
  */
 router.post('/api/register', urlencodedParser, authenticationController.onRegisterApi);
 
-
 module.exports = router;

@@ -9,6 +9,11 @@ module.exports.getOrder = function (req, res, next) {
     });
 };
 
+/**
+ * API
+ * Method: GET
+ * Get order list
+ */
 module.exports.getOrderApi = function (req, res, next) {
     Invoice.find({}, function (err, invoices) {
         if (err) {
@@ -21,6 +26,15 @@ module.exports.getOrderApi = function (req, res, next) {
         }
     });
 };
+
+/**
+ * API
+ * Method: POST
+ * Find order from customer_id
+ */
+module.exports.findOrderByCustomerApi = function(req, res, next) {
+    
+}
 
 //Add product
 module.exports.insertOrder = function (req, res, next) {
@@ -43,6 +57,30 @@ module.exports.insertOrder = function (req, res, next) {
             console.log('unsaved');
         });
 };
+
+/**
+ * API
+ * Method: POST
+ * Create new order
+ */
+module.exports.insertOrderApi = function(req, res, next) {
+    // Define a JSONobject for the image attributes for saving to database
+    // Create an instance of model SomeModel
+    var invoice = new Invoice({
+        customer_name: req.body.customer_name,
+        shipping_address: req.body.address,
+        payment_method: req.body.payment_method,
+        payment_status: req.body.payment_status,
+        product_name: req.body.product_name,
+        product_quantity: req.body.product_quantity,
+    });
+    invoice.save(function (err) {
+        if (err) return handleError(err);
+        res.status(200).json({
+            mess: 'Add order successfully !'
+        });
+    });
+}
 
 //Edit product
 module.exports.editOrder = function (req, res, next) {

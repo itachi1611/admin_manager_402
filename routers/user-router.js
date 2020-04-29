@@ -16,6 +16,13 @@ router.get('/user', userController.getUser);
 /* POST user edit page. */
 router.post('/user/edit', urlencodedParser, userController.editUser);
 
+/**
+ * API
+ * Methos: POST
+ * Edit user
+ */
+router.post('/api/user/edit', urlencodedParser, userController.editUserApi);
+
 /* POST user remove page. */
 router.post('/user/remove', urlencodedParser, userController.removeUser);
 
