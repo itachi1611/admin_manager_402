@@ -33,7 +33,7 @@ module.exports.getOrderApi = function (req, res, next) {
  * Find order from customer_id
  */
 module.exports.findOrderByCustomerApi = function(req, res, next) {
-    
+
 }
 
 //Add product
@@ -66,20 +66,33 @@ module.exports.insertOrder = function (req, res, next) {
 module.exports.insertOrderApi = function(req, res, next) {
     // Define a JSONobject for the image attributes for saving to database
     // Create an instance of model SomeModel
+    var post_data = req.body;
+    var customer_name = post_data.customer_name;
+    var customer_id = post_data.customer_id;
+    var shipping_address = post_data.shipping_address;
+    var payment_method = post_data.payment_method;
+    var payment_status = post_data.payment_status;
+    var product_name = post_data.product_name;
+    var product_quantity = post_data.product_quantity;
+
     var invoice = new Invoice({
-        customer_name: req.body.customer_name,
-        shipping_address: req.body.address,
-        payment_method: req.body.payment_method,
-        payment_status: req.body.payment_status,
-        product_name: req.body.product_name,
-        product_quantity: req.body.product_quantity,
+        customer_name: customer_name,
+        customer_id: customer_id,
+        shipping_address: shipping_address,
+        payment_method: payment_method,
+        payment_status: payment_status,
+        product_name: product_name,
+        product_quantity: product_quantity,
     });
-    invoice.save(function (err) {
-        if (err) return handleError(err);
-        res.status(200).json({
-            mess: 'Add order successfully !'
+    invoice.save()
+        .then(item => {
+            res.status(200).json({
+                mess: "Create order success !"
+            })
+        })
+        .catch(err => {
+            res.status(401).json(err)
         });
-    });
 }
 
 //Edit product
