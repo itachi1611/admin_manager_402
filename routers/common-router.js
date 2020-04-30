@@ -31,7 +31,7 @@ router.get('/logout', (req, res) => {
   storage.setItem("isLogin", false);
   res.render("login");
 })
-router.get('/order', (req, res) => res.render('order'));
+//router.get('/order', (req, res) => res.render('order'));
 // router.get('/user', (req, res) => res.render('user'));
 router.get('/recover', (req, res) => res.render('recover'));
 router.get('/dashboard', (req, res) => {

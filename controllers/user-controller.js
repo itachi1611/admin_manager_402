@@ -19,7 +19,8 @@ module.exports.editUser = function (req, res, next) {
       // image: req.body.image,
       name: req.body.name,
       phone: req.body.phone,
-      address: req.body.address
+      address: req.body.address,
+      updateAt: Date.now()
     }}, {
         returnNewDocument: true,
         new: true,
@@ -37,7 +38,7 @@ module.exports.editUser = function (req, res, next) {
  */
 module.exports.editUserApi = function(req, res, next) {
     User.findOneAndUpdate({
-        _id: req.body.uid
+        _id: req.body._id
     }, {
         $set: {
             name: req.body.name,
@@ -51,11 +52,13 @@ module.exports.editUserApi = function(req, res, next) {
         strict: false
     }, function(err, num) {
         if(err) {
-            res.status(404).json(num);
+            res.status(404).json({
+                mess: "Something wrong happended !"
+            });
         }
-        if(num > 0) {
-            res.status(200).json(num);
-        }
+        res.status(200).json({
+            mess: "Update user successful !"
+        });
     });
 }
 

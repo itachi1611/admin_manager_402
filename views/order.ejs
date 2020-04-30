@@ -736,76 +736,147 @@
                                         <thead>
                                             <tr>
                                                 <th>Order No</th>
-                                                <th>Product Name</th>
+                                                <th>Customer Name</th>
                                                 <th>Purchased On</th>
-                                                <th>Shipping Status</th>
+                                                <th>Address</th>
                                                 <th>Payment Method</th>
                                                 <th>Payment Status</th>
+                                                <th>Quantity</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% var index = 0 %>
+                                            <%  invoices.forEach(function(invoice) { %>
                                             <tr>
-                                                <td>Q01</td>
-                                                <td>Iphone 7</td>
-                                                <td>12 Jan 2018</td>
-                                                <td>Dispatched</td>
-                                                <td>Credit card</td>
-                                                <td><label class="badge">Approved</label></td>
-                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View
+                                                <% if(index < 10) { %>
+                                                    <td>P0<%= index %></td>
+                                                <% } else { %>
+                                                    <td>P<%= index %></td> 
+                                                <% } %>
+                                                <td><%= invoice.customer_name %></td>
+                                                <td><%= invoice.purchased_date %></td>
+                                                <td><%= invoice.shipping_address %></td>
+                                                <% if(invoice.payment_method == 0) { %>
+                                                    <td>Credit card</td>
+                                                <% } else if(invoice.payment_method == 1) { %>
+                                                    <td>Internet banking</td>
+                                                <% } else if(invoice.payment_method == 2) { %>
+                                                    <td>Cash on delivery</td>
+                                                <% } else { %>
+                                                    <td>Debit card</td>
+                                                <% } %>
+                                                <% if(invoice.payment_status == 0) { %>
+                                                    <td><label class="badge">Pending</label></td>
+                                                <% } else if(invoice.payment_status == 1) { %>
+                                                    <td><label class="badge">Approved</label></td>
+                                                <% } else { %>
+                                                    <td><label class="badge">Rejected</label></td>
+                                                <% } %>
+                                                <td><%= invoice.product_quantity %></td>
+                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm"
+                                                        data-toggle="modal" data-target="#<%= invoice._id %>"
+                                                        data-original-title="View order">View
                                                         Order</a></td>
-                                                <td><button class="btn btn-danger btn-sm"><i
+                                                <td><button class="btn btn-danger btn-sm"
+                                                        data-target="#del<%=invoice._id %>" data-toggle="modal"
+                                                        data-original-title="Remove"><i
                                                             class="icon-trash"></i></button></td>
                                             </tr>
-                                            <tr>
-                                                <td>Q02</td>
-                                                <td>Galaxy S8</td>
-                                                <td>18 Jan 2018</td>
-                                                <td>Dispatched</td>
-                                                <td>Internet banking</td>
-                                                <td><label class="badge">Pending</label></td>
-                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View
-                                                        Order</a></td>
-                                                <td><button class="btn btn-danger btn-sm"><i
-                                                            class="icon-trash"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Q03</td>
-                                                <td>Amazon Echo</td>
-                                                <td>22 Feb 2018</td>
-                                                <td>Dispatched</td>
-                                                <td>Credit card</td>
-                                                <td><label class="badge">Approved</label></td>
-                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View
-                                                        Order</a></td>
-                                                <td><button class="btn btn-danger btn-sm"><i
-                                                            class="icon-trash"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Q04</td>
-                                                <td>Google Pixel</td>
-                                                <td>22 Feb 2018</td>
-                                                <td>Dispatched</td>
-                                                <td>Cash on delivery</td>
-                                                <td><label class="badge">Rejected</label></td>
-                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View
-                                                        Order</a></td>
-                                                <td><button class="btn btn-danger btn-sm"><i
-                                                            class="icon-trash"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Q05</td>
-                                                <td>Mac Mini</td>
-                                                <td>8 March 2018</td>
-                                                <td>Dispatched</td>
-                                                <td>Debit card</td>
-                                                <td><label class="badge">Approved</label></td>
-                                                <td><a href="javascript:void(0);" class="btn btn-success btn-sm">View
-                                                        Order</a></td>
-                                                <td><button class="btn btn-danger btn-sm"><i
-                                                            class="icon-trash"></i></button></td>
-                                            </tr>
+                                            <!-- The Modal Edit start -->
+                                            <div class="modal dialog" id="<%= invoice._id %>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">View Order</h4>
+                                                            <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <div class="col-md-12">
+                                                                <form role="form" action="/order/edit" method="POST">
+                                                                    <input class="form-control" id="productSelect"
+                                                                        value="<%= invoice.customer_name %>">
+                                                                    <input class="form-control" hidden="true"
+                                                                        value="<%= invoice._id %>" name="iid"
+                                                                        id="invoiceid" type="text">
+                                                                    <div class="form-group">
+                                                                        <label for="productname"
+                                                                            class="loginFormElement">Name
+                                                                            Product</label>
+                                                                        <input class="form-control"
+                                                                            value="<%= invoice.product_name %>"
+                                                                            name="name"
+                                                                            id="productname" type="text">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="productquantity"
+                                                                            class="loginFormElement">Product
+                                                                            Quantity</label>
+                                                                        <input class="form-control" name="quantity"
+                                                                            value="<%= invoice.product_quantity %>"
+                                                                            id="productprice" type="number">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="productprice"
+                                                                            class="loginFormElement">Product
+                                                                            Price</label>
+                                                                        <input class="form-control" name="price"
+                                                                            value="<%= invoice.product_price %>"
+                                                                            id="productprice" type="number">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="total"
+                                                                            class="loginFormElement">Total
+                                                                            Price</label>
+                                                                            <% var total = invoice.product_price * invoice.product_quantity; %>
+                                                                        <input class="form-control" name="total"
+                                                                            value="<%= total.toFixed(2)%>
+                                                                            $"
+                                                                            id="invoicetotal" type="number">
+                                                                    </div>
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                    <!-- The Modal Edit end -->
+                                                                    
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- The Modal Remove start -->
+                                            <div id="del<%=invoice._id %>" class="modal modal-dangerdialog"
+                                                style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Remove
+                                                                Order</h5>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <form role="form" action="/order/remove" method="POST">
+                                                                <input class="form-control" hidden="true"
+                                                                    value="<%= invoice._id %>" name="iid"
+                                                                    id="remproductid" type="text">
+                                                                <button type="button" class="btn btn-success"
+                                                                    data-dismiss="modal">Cancer</button>
+                                                                <button type="submit" class="btn btn-danger">OK</button>
+                                                            </form>
+                                                        </div>
+                                                    </div> <!-- / .modal-content -->
+                                                </div> <!-- / .modal-dialog -->
+                                            </div>
+                                            <!-- The Modal Remove end -->
+                                            <% index++ %>
+                                            <% }); %>
                                         </tbody>
                                     </table>
                                 </div>

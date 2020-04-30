@@ -18,8 +18,8 @@ const invoiceSchema = new mongoose.Schema({
         required: true
     },
     payment_method: {
-        type: String,
-        required: true
+        type: Number,
+        default: 0
     },
     payment_status: {
         type: Number,
@@ -30,6 +30,10 @@ const invoiceSchema = new mongoose.Schema({
         required: true
     },
     product_quantity: {
+        type: Number,
+        required: true
+    },
+    product_price: {
         type: Number,
         required: true
     }

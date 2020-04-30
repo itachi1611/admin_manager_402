@@ -33,7 +33,12 @@ module.exports.getOrderApi = function (req, res, next) {
  * Find order from customer_id
  */
 module.exports.findOrderByCustomerApi = function(req, res, next) {
-
+    Invoice.find({
+        customer_id: req.body.customer_id
+    }, function(err, invoices) {
+        if(err) { res.status(401)};
+        res.status(200).json(invoices);
+    });
 }
 
 //Add product
@@ -47,6 +52,7 @@ module.exports.insertOrder = function (req, res, next) {
         payment_status: req.body.payment_status,
         product_name: req.body.product_name,
         product_quantity: req.body.product_quantity,
+        product_price: req.body.product_price
     });
     invoice.save()
         .then(item => {
@@ -66,23 +72,13 @@ module.exports.insertOrder = function (req, res, next) {
 module.exports.insertOrderApi = function(req, res, next) {
     // Define a JSONobject for the image attributes for saving to database
     // Create an instance of model SomeModel
-    var post_data = req.body;
-    var customer_name = post_data.customer_name;
-    var customer_id = post_data.customer_id;
-    var shipping_address = post_data.shipping_address;
-    var payment_method = post_data.payment_method;
-    var payment_status = post_data.payment_status;
-    var product_name = post_data.product_name;
-    var product_quantity = post_data.product_quantity;
-
     var invoice = new Invoice({
-        customer_name: customer_name,
-        customer_id: customer_id,
-        shipping_address: shipping_address,
-        payment_method: payment_method,
-        payment_status: payment_status,
-        product_name: product_name,
-        product_quantity: product_quantity,
+        customer_name: req.body.customer_name,
+        customer_id: req.body.customer_id,
+        shipping_address: req.body.shipping_address,
+        product_name: req.body.product_name,
+        product_quantity: req.body.product_quantity,
+        product_price: req.body.product_price
     });
     invoice.save()
         .then(item => {

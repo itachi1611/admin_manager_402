@@ -23,7 +23,7 @@ router.post('/order/add', urlencodedParser, invoiceController.insertOrder);
 router.post('/api/order/add', urlencodedParser, invoiceController.insertOrderApi);
 
 /* API POST find order by customer id */
-router.post('/api/order/{id}', urlencodedParser, invoiceController.findOrderByCustomerApi);
+router.post('/api/order/user', urlencodedParser, invoiceController.findOrderByCustomerApi);
 
 /* POST order edit page. */
 router.post('/order/edit', urlencodedParser, invoiceController.editOrder);
